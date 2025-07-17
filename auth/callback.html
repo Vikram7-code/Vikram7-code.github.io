@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OAuth Callback</title>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+    <script>
+      // Example: Extract hash or query params and send to opener
+      const params = new URLSearchParams(window.location.hash.substring(1));
+      window.opener?.postMessage(
+        { type: "oauth-callback", data: Object.fromEntries(params) },
+        "*"
+      );
+      window.close(); // Close the popup
+    </script>
+  </body>
+</html>
